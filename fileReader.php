@@ -152,7 +152,65 @@
 		</div>
 
 		<div id="entityDiv" style="display: none">
-			<h3>No entity textures found.</h3>
+		<table id="blockTable" style="width:40%;">
+				
+				<tr>
+					<td><b>Entity Name:</b></td>
+					<td><b>Found Texture:</b></td>
+					<td><b>Entity Name:</b></td>
+					<td><b>Found Texture:</b></td>
+				</tr>
+				<?php
+					$amount = 0;
+					$di = new RecursiveDirectoryIterator($dir.'/assets/minecraft/optifine/random/entity');
+					foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+						if (substr($filename, -11) === '.properties') {
+							$string0 = parse_ini_file($filename);
+							if ($amount % 2 == 0) {
+								echo "<tr>";
+							}
+							echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.1'].'</td>'));
+							echo '<td><img style="image-rendering: pixelated;" src="'.str_replace(".properties", "", $filename).$string0['textures.1'].'.png" alt="test" height="50" width="50"></td>';
+							$amount++;
+						}
+					}
+					if ($amount == 0) {
+						echo '<h3>No entity textures found.</h3>';
+						echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
+					}
+
+					function parse_properties($txtProperties) {
+						$result = array();
+						$lines = split("\n", $txtProperties);
+						$key = "";
+						$isWaitingOtherLine = false;
+					
+						foreach($lines as $i=>$line) {
+							if(empty($line) || (!$isWaitingOtherLine && strpos($line,"#") === 0)) continue;
+					
+							if(!$isWaitingOtherLine) {
+								$key = substr($line,0,strpos($line,'='));
+								$value = substr($line,strpos($line,'=') + 1, strlen($line));
+							} else {
+								$value .= $line;
+							}
+					
+							/* Check if ends with single '\' */
+							if(strrpos($value,"\\") === strlen($value)-strlen("\\")) {
+								$value = substr($value, 0, strlen($value)-1)."\n";
+								$isWaitingOtherLine = true;
+							} else {
+								$isWaitingOtherLine = false;
+							}
+					
+							$result[$key] = $value;
+							unset($lines[$i]);
+						}
+					
+						return $result;
+					}
+				?>
+			</table>
 		</div>
 
 		<div id="fontDiv" style="display: none">
@@ -182,13 +240,13 @@
 								for ($i2 = 0; $i2 < count($charArr); $i2++) {
 									$charVal = "&zwnj;".$charArr[$i2];
 								}
-								echo '<td>'.$charVal.'</td>';
+								echo '<td>'.str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($json0['providers'][$i]['chars'])))).'</td>';
 								echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
 							}
 						}
 					}
 					if ($amount == 0) {
-						echo '<h3>No block textures found.</h3>';
+						echo '<h3>No font textures found.</h3>';
 						echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
 					}
 				?>
