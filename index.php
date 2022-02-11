@@ -56,7 +56,6 @@
 			<li>
 				<p class="madeBy" style="text-align: center; color: whitesmoke; font-size: 15px; font-family: 'Roboto Mono', monospace;">Made by Dannus - V1.0</p>
 			</li>
-			
 		<ul>
 	</body>
 
