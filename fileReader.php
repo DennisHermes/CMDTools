@@ -10,12 +10,9 @@
 	</head>
 
 	<body>
-		<?php
-			$file = $_FILES['file'];
-		?>
 	
 		<br>
-		<h1 style="color: whitesmoke; text-align: center; font-family: 'Roboto Mono', monospace;"><?php echo strtok($file['name'], '.'); ?></h1>
+		<h1 style="color: whitesmoke; text-align: center; font-family: 'Roboto Mono', monospace;"><?php echo strtok($_GET['name'], '.'); ?></h1>
 		<br><br><br><br>
 
 		<div class="topnav">
@@ -56,8 +53,10 @@
 				
 				<tr>
 					<td><b>CMD:</b></td>
+					<td><b>Texture name:</b></td>
 					<td><b>Found Texture:</b></td>
 					<td><b>CMD:</b></td>
+					<td><b>Texture name:</b></td>
 					<td><b>Found Texture:</b></td>
 				</tr>
 			
@@ -65,13 +64,10 @@
 
 					error_reporting(0);
 
-					$dir = "tmp_".rand(0, 9).rand(0, 9).rand(0, 9).rand(0, 9);
-					mkdir($dir, 0700);
+					$dir = $_GET['dir'];
 
-					move_uploaded_file($file['tmp_name'], $dir."/".$file['name']);
-					
 					$zip = new ZipArchive;
-					if ($zip->open($dir."/".$file['name']) === TRUE) {
+					if ($zip->open($dir."/".$_GET['name']) === TRUE) {
 						$zip->extractTo($dir);
 						$zip->close();
 					} else {
@@ -96,7 +92,8 @@
 									}
 									
 									echo '<td>'.$json0['overrides'][$i]['predicate']['custom_model_data'].'</td>';
-									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json1['textures']['layer0']).'.png" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
+									echo'<td>'.explode("/", str_replace("minecraft:", "", $json1['textures']['layer0']))[1].'</td>';
+									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json1['textures']['layer0']).'.png" alt="test" height="50" width="50" "></td>';
 								}
 							}
 						}
