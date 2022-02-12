@@ -11,26 +11,10 @@
 
 	<body>
 		<?php
-			foreach (glob("thread1/assets") as $filename) {
+			foreach (glob("folder/assets") as $filename) {
 				deleteDir($filename);
 			}
-			foreach (glob("thread1/*") as $filename) {
-				if ((substr($filename, -4)) === '.zip') {
-					unlink($filename);
-				}
-			}
-			foreach (glob("thread2/assets") as $filename) {
-				deleteDir($filename);
-			}
-			foreach (glob("thread2/*") as $filename) {
-				if ((substr($filename, -4)) === '.zip') {
-					unlink($filename);
-				}
-			}
-			foreach (glob("thread3/assets") as $filename) {
-				deleteDir($filename);
-			}
-			foreach (glob("thread3/*") as $filename) {
+			foreach (glob("folder/*") as $filename) {
 				if ((substr($filename, -4)) === '.zip') {
 					unlink($filename);
 				}
