@@ -62,16 +62,21 @@
 			
 				<?php
 
-					error_reporting(0);
+					//error_reporting(0);
 
 					$dir = $_GET['dir'];
-
-					$zip = new ZipArchive;
-					if ($zip->open($dir."/".$_GET['name']) === TRUE) {
-						$zip->extractTo($dir);
-						$zip->close();
-					} else {
-						echo 'failed';
+					$zip = zip_open($dir."/".$_GET['name']);
+					if ($zip) {
+						while ($zip_entry = zip_read($zip)) {
+							if (zip_entry_open($zip, $zip_entry)) {
+								if (substr(zip_entry_name($zip_entry), -4) === '.png') {
+									$contents = zip_entry_read($zip_entry);
+									echo '<img style="image-rendering: pixelated;" src="data:image/png;base64,'.base64_encode($contents).' " alt="test" height="50" width="50">';
+									zip_entry_close($zip_entry);
+								}
+							}
+						}
+						zip_close($zip);
 					}
 					
 					try {
@@ -93,7 +98,7 @@
 									
 									echo '<td>'.$json0['overrides'][$i]['predicate']['custom_model_data'].'</td>';
 									echo'<td>'.explode("/", str_replace("minecraft:", "", $json1['textures']['layer0']))[1].'</td>';
-									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json1['textures']['layer0']).'.png" alt="test" height="50" width="50" "></td>';
+									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.$_GET['name'].'.zip/assets/minecraft/textures/'.str_replace("minecraft:", "", $json1['textures']['layer0']).'.png" alt="test" height="50" width="50" "></td>';
 								}
 							}
 						}
