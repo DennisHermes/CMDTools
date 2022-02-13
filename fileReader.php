@@ -70,9 +70,12 @@
 						while ($zip_entry = zip_read($zip)) {
 							if (zip_entry_open($zip, $zip_entry)) {
 								if (substr(zip_entry_name($zip_entry), -4) === '.png') {
-									$contents = zip_entry_read($zip_entry);
-									echo '<img style="image-rendering: pixelated;" src="data:image/png;base64,'.base64_encode($contents).' " alt="test" height="50" width="50">';
+									$contents = zip_entry_read($zip_entry, (zip_entry_filesize($zip_entry) + 1024));
+									$base64 = 'data:image/png;base64,' . base64_encode($contents);
+									echo $base64;
+									echo '<img style="image-rendering: pixelated;" src="'.$base64.' " alt="test" height="50" width="50">';
 									zip_entry_close($zip_entry);
+									
 								}
 							}
 						}
