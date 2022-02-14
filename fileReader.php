@@ -11,14 +11,22 @@
 
 	<body>
 	
+		<?php
+
+			//get the file
+			$file = $_FILES['file'];
+			$dir = $file['tmp_name'];
+
+		?>
+
 		<br>
-		<h1 style="color: whitesmoke; text-align: center; font-family: 'Roboto Mono', monospace;"><?php echo strtok($_GET['name'], '.'); ?></h1>
+		<h1 style="color: whitesmoke; text-align: center; font-family: 'Roboto Mono', monospace;"><?php echo strtok($file['name'], '.'); ?></h1>
 		<br><br><br><br>
 
 		<div class="topnav">
 		  <a id="item" onclick="change('item')" class="active">Items textures</a>
 		  <a id="block" onclick="change('block')">Blocks textures</a>
-		  <a id="entity" onclick="change('entity')">Entities textures</a>
+		  <a id="entity" onclick="change('entity')">Optifine entities textures</a>
 		  <a id="font" onclick="change('font')">Fonts textures</a>
 		  <a id="all" onclick="change('all')">All found textures</a>
 		</div>
@@ -49,21 +57,20 @@
 			
 			<br><br>
 
-			<table style="width:40%;">
-				
+			<table style="width: 80%;">
+			
 				<tr>
-					<td><b>CMD:</b></td>
-					<td><b>Texture name:</b></td>
-					<td><b>Found Texture:</b></td>
+					<th><b>CMD:</b></th>
+					<th><b>Texture name:</b></th>
+					<th><b>Found Texture:</b></th>
+					<th><b>CMD:</b></th>
+					<th><b>Texture name:</b></th>
+					<th><b>Found Texture:</b></th>
 				</tr>
 			
 				<?php
 
 					//error_reporting(0);
-
-					//get the file
-					$file = $_FILES['file'];
-					$dir = $file['tmp_name'];
 
 					//create data collector
 					$referenceCollertor = [];
@@ -109,12 +116,16 @@
 						zip_close($zip);
 
 						//glueing things together
-						foreach($referenceCollertor as $ref){
-							echo "<tr>";
+						$amount = 1;
+						foreach ($referenceCollertor as $ref) {
+							$amount++;
+							if ($amount % 2 == 0) {
+								echo "</tr>";
+								echo "<tr>";
+							}
 							echo '<td>'.$cmdCollector[$ref].'</td>';
 							echo '<td>'.$ref.'</td>';
-							echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="test" height="50" width="50">'.'</td>';
-							echo "</tr>";
+							echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;">'.'</td>';
 						}
 					}
 				?>
@@ -252,11 +263,8 @@
 		<div id="allDiv" style="display: none;">
 			<?php
 
-				$di0 = new RecursiveDirectoryIterator($dir.'/assets');
-				foreach (new RecursiveIteratorIterator($di0) as $filename => $file) {
-					if (substr($filename, -4) === '.png') {
-						echo '<img style="image-rendering: pixelated;" src="'.$filename.'" alt="test" height="50" width="50">';
-					}
+				foreach($imgCollector as $img) {
+					echo '<img style="image-rendering: pixelated;" src="'.$img.'" alt="test" height="50" width="50">';
 				}
 
 			?>
