@@ -44,7 +44,7 @@
 				<h1 class="Title" style="text-align: center; color: whitesmoke; font-size: 50px; font-family: 'Roboto Mono', monospace;">CMDTool</h1>
 			
 				<div class="content">
-					<form action="refactoring.php" method="post" enctype="multipart/form-data">
+					<form action="fileReader.php" method="post" enctype="multipart/form-data">
 						<label for="file-upload" class="custom-file-upload">
 							<i class="fa fa-cloud-upload"></i> Select resource pack
 						</label>

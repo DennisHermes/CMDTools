@@ -55,63 +55,67 @@
 					<td><b>CMD:</b></td>
 					<td><b>Texture name:</b></td>
 					<td><b>Found Texture:</b></td>
-					<td><b>CMD:</b></td>
-					<td><b>Texture name:</b></td>
-					<td><b>Found Texture:</b></td>
 				</tr>
 			
 				<?php
 
 					//error_reporting(0);
 
-					$dir = $_GET['dir'];
-					$zip = zip_open($dir."/".$_GET['name']);
+					//get the file
+					$file = $_FILES['file'];
+					$dir = $file['tmp_name'];
+
+					//create data collector
+					$referenceCollertor = [];
+					$imgCollector = array();
+					$cmdCollector = array();
+					
+					//start reading zip
+					$zip = zip_open($dir);
 					if ($zip) {
 						while ($zip_entry = zip_read($zip)) {
 							if (zip_entry_open($zip, $zip_entry)) {
-								if (substr(zip_entry_name($zip_entry), -4) === '.png') {
-									$contents = zip_entry_read($zip_entry, (zip_entry_filesize($zip_entry) + 1024));
+
+								//save default data
+								$fileName = zip_entry_name($zip_entry);
+								$chuckSize = (zip_entry_filesize($zip_entry) + 1024);
+
+								//collect all textures
+								if (substr($fileName, -4) === '.png') {
+									$contents = zip_entry_read($zip_entry, $chuckSize);
 									$base64 = 'data:image/png;base64,' . base64_encode($contents);
-									echo $base64;
-									echo '<img style="image-rendering: pixelated;" src="'.$base64.' " alt="test" height="50" width="50">';
-									zip_entry_close($zip_entry);
-									
+									$pathList = explode("/", $fileName);
+									$textureName = str_replace(".png", "", end($pathList));
+									$imgCollector[$textureName] = $base64;
+
+								//collect all references
+								} else if (substr($fileName, -5) === '.json') {
+									if (!strpos(str_replace('assets/minecraft/models/item/', '', $fileName), "/")) {
+										$contents = zip_entry_read($zip_entry, $chuckSize);
+										$json0 = json_decode($contents, true);
+										$array = $json0['overrides'];
+										for ($i = 0; $i < count($array); $i++) {
+											$modelReference = $json0['overrides'][$i]['model'];
+											$pathList = explode("/", $modelReference);
+											$textureName = end($pathList);
+											array_push($referenceCollertor, $textureName);
+											$cmdCollector[$textureName] = $json0['overrides'][$i]['predicate']['custom_model_data'];
+										}
+									}
 								}
 							}
+							zip_entry_close($zip_entry);
 						}
 						zip_close($zip);
-					}
-					
-					try {
-						$amount1 = 0;
-						$di2 = new RecursiveDirectoryIterator($dir.'/assets/minecraft/models/item');
-						foreach (new RecursiveIteratorIterator($di2) as $filename => $file) {
-							if (!$di2->isDir() AND substr($filename, -5) === '.json') {
-								$string0 = file_get_contents($filename);
-								$json0 = json_decode($string0, true);
-								$array = $json0['overrides'];
-								for ($i = 0; $i < count($array); $i++) {
-									$string1 = file_get_contents($dir.'/assets/minecraft/models/'.$json0['overrides'][$i]['model'].'.json');
-									$json1 = json_decode($string1, true);
-									
-									$amount1++;
-									if ($i % 2 == 0) {
-										echo "<tr>";
-									}
-									
-									echo '<td>'.$json0['overrides'][$i]['predicate']['custom_model_data'].'</td>';
-									echo'<td>'.explode("/", str_replace("minecraft:", "", $json1['textures']['layer0']))[1].'</td>';
-									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.$_GET['name'].'.zip/assets/minecraft/textures/'.str_replace("minecraft:", "", $json1['textures']['layer0']).'.png" alt="test" height="50" width="50" "></td>';
-								}
-							}
+
+						//glueing things together
+						foreach($referenceCollertor as $ref){
+							echo "<tr>";
+							echo '<td>'.$cmdCollector[$ref].'</td>';
+							echo '<td>'.$ref.'</td>';
+							echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="test" height="50" width="50">'.'</td>';
+							echo "</tr>";
 						}
-						if ($amount1 == 0) {
-							echo '<h3>No block textures found.</h3>';
-							echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
-						}
-					} catch (exception $e) {
-						echo '<h3>No block textures found.</h3>';
-						echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
 					}
 				?>
 			</table>
