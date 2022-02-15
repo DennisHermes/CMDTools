@@ -61,9 +61,11 @@
 			
 				<tr>
 					<th><b>CMD:</b></th>
+					<th><b>Item:</b></th>
 					<th><b>Texture name:</b></th>
 					<th><b>Found Texture:</b></th>
 					<th><b>CMD:</b></th>
+					<th><b>Item:</b></th>
 					<th><b>Texture name:</b></th>
 					<th><b>Found Texture:</b></th>
 				</tr>
@@ -76,6 +78,7 @@
 					$referenceCollertor = [];
 					$imgCollector = array();
 					$cmdCollector = array();
+					$optiEntCollector = array();
 					
 					//start reading zip
 					$zip = zip_open($dir);
@@ -102,19 +105,31 @@
 										$json0 = json_decode($contents, true);
 										$array = $json0['overrides'];
 										for ($i = 0; $i < count($array); $i++) {
+											//get all items
 											$modelReference = $json0['overrides'][$i]['model'];
 											$pathList = explode("/", $modelReference);
 											$textureName = end($pathList);
 											array_push($referenceCollertor, $textureName);
+
+											//get refering item
+											$pathList = explode("/", $fileName);
+											$item = str_replace('.json', '', end($pathList));
+											$itemCollector[$textureName] = $item;
+
+											//get refering cmd
 											$cmdCollector[$textureName] = $json0['overrides'][$i]['predicate']['custom_model_data'];
 										}
 									}
+								} else if (substr($fileName, -11) === '.properties') {
+									$pathList = explode("/", $fileName);
+									$entName = str_replace('.properties', '', end($pathList));
+									$optiEntCollector[$entName] = array(zip_entry_read($zip_entry, $chuckSize), $entName);
 								}
 							}
 							zip_entry_close($zip_entry);
 						}
 						zip_close($zip);
-
+						
 						//glueing things together
 						$amount = 1;
 						foreach ($referenceCollertor as $ref) {
@@ -124,6 +139,7 @@
 								echo "<tr>";
 							}
 							echo '<td>'.$cmdCollector[$ref].'</td>';
+							echo '<td>'.$itemCollector[$ref].'</td>';
 							echo '<td>'.$ref.'</td>';
 							echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;">'.'</td>';
 						}
@@ -144,7 +160,7 @@
 				</tr>
 			
 				<?php
-					try {
+					/*try {
 						$di1 = new RecursiveDirectoryIterator($dir.'/assets/minecraft/textures');
 						$i = 1;
 						$amount2 = 0;
@@ -173,7 +189,7 @@
 					} catch (exception $e) {
 						echo '<h3>No block textures found.</h3>';
 						echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
-					}
+					}*/
 				?>
 			</table>
 		</div>
@@ -182,34 +198,26 @@
 			<table id="entityTable" style="width:40%;">
 				
 				<tr>
-					<td><b>Entity Name:</b></td>
+					<td><b>Entity:</b></td>
+					<td><b>Optifine name:</b></td>
 					<td><b>Found Texture:</b></td>
-					<td><b>Entity Name:</b></td>
+					<td><b>Entity:</b></td>
+					<td><b>Optifine name:</b></td>
 					<td><b>Found Texture:</b></td>
 				</tr>
 
 				<?php
-					try {
-						$amount3 = 0;
-						$di3 = new RecursiveDirectoryIterator($dir.'/assets/minecraft/optifine/random/entity');
-						foreach (new RecursiveIteratorIterator($di3) as $filename => $file) {
-							if (substr($filename, -11) === '.properties') {
-								$string0 = parse_ini_file($filename);
-								if ($amount3 % 2 == 0) {
-									echo "<tr>";
-								}
-								echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.1'].'</td>'));
-								echo '<td><img style="image-rendering: pixelated;" src="'.str_replace(".properties", "", $filename).$string0['textures.1'].'.png" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
-								$amount3++;
-							}
+					$amount = 1;
+					foreach ($optiEntCollector as $optiEnt) {
+						$amount++;
+						if ($amount % 2 == 0) {
+							echo "</tr>";
+							echo "<tr>";
 						}
-						if ($amount3 == 0) {
-							echo '<h3>No entity textures found.</h3>';
-							echo '<script>document.getElementById("entityTable").style.display = "none";</script>';
-						}
-					} catch (exception $e) {
-						echo '<h3>No entity textures found.</h3>';
-						echo '<script>document.getElementById("entityTable").style.display = "none";</script>';
+						$string0 = parse_ini_string($optiEnt[0]);
+						echo '<td>'.$optiEnt[1].'</td>';
+						echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.1'].'</td>'));
+						echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$optiEnt[1].$string0['textures.1']].'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
 					}
 				?>
 			</table>
@@ -225,37 +233,22 @@
 					<td><b>Found Texture:</b></td>
 				</tr>
 				<?php
-					try {
-						$amount4 = 0;
-						$di4 = new RecursiveDirectoryIterator($dir.'/assets/minecraft/font');
-						foreach (new RecursiveIteratorIterator($di4) as $filename => $file) {
-							if (!$di4->isDir() AND substr($filename, -5) === '.json') {
-								$string0 = file_get_contents($filename);
-								$json0 = json_decode($string0, true);
-								$array = $json0['providers'];
-								for ($i = 0; $i < count($array); $i++) {
-									$amount4++;
-									if ($i % 2 == 0) {
-										echo "<tr>";
-									}
-									
-									$charArr = str_split($json0['providers'][$i]['chars'][0]);
-									for ($i2 = 0; $i2 < count($charArr); $i2++) {
-										$charVal = "&zwnj;".$charArr[$i2];
-									}
-									echo '<td>'.str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($json0['providers'][$i]['chars'])))).'</td>';
-									echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
-								}
-							}
+					/*$string0 = file_get_contents($filename);
+					$json0 = json_decode($string0, true);
+					$array = $json0['providers'];
+					for ($i = 0; $i < count($array); $i++) {
+						$amount4++;
+						if ($i % 2 == 0) {
+							echo "<tr>";
 						}
-						if ($amount4 == 0) {
-							echo '<h3>No font textures found.</h3>';
-							echo '<script>document.getElementById("fontTable").style.display = "none";</script>';
+						
+						$charArr = str_split($json0['providers'][$i]['chars'][0]);
+						for ($i2 = 0; $i2 < count($charArr); $i2++) {
+							$charVal = "&zwnj;".$charArr[$i2];
 						}
-					} catch (exception $e) {
-						echo '<h3>No font textures found.</h3>';
-						echo '<script>document.getElementById("fontTable").style.display = "none";</script>';
-					}
+						echo '<td>'.str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($json0['providers'][$i]['chars'])))).'</td>';
+						echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
+					}*/
 				?>
 			</table>
 		</div>
