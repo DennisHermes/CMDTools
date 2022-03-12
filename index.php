@@ -1,67 +1,71 @@
-<html>
+<?php include 'navigator.php'; ?>
 
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-	
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
-	
+		
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/tailwind.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Hubballi&family=Oxygen:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
 
 	</head>
 
-	<body>
-		<?php
-			foreach (glob("folder/assets") as $filename) {
-				deleteDir($filename);
-			}
-			foreach (glob("folder/*") as $filename) {
-				if ((substr($filename, -4)) === '.zip') {
-					unlink($filename);
-				}
-			}
-			
-			function deleteDir($dirPath) {
-				if (! is_dir($dirPath)) {
-					throw new InvalidArgumentException('$dirPath must be a directory');
-				}
-				if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
-					$dirPath .= '/';
-				}
-				$files = glob($dirPath . '*', GLOB_MARK);
-				foreach ($files as $file) {
-					if (is_dir($file)) {
-						deleteDir($file);
-					} else {
-						unlink($file);
-					}
-				}
-				rmdir($dirPath);
-			}
-		?>
-		
-		<ul style="min-width: 20%;">
-			<li style="min-width: 20%;">
-				<h1 class="Title" style="text-align: center; color: whitesmoke; font-size: 50px; font-family: 'Roboto Mono', monospace;">CMDTool</h1>
-			
-				<div class="content">
-					<form action="fileReader.php" method="post" enctype="multipart/form-data">
-						<label for="file-upload" class="custom-file-upload">
-							<i class="fa fa-cloud-upload"></i> Select resource pack
-						</label>
-						<br><br>
-						<p style="text-align: center; color: black; font-size: 15px; font-family: 'Roboto Mono', monospace;">(has to be .zip file)</p>
-						<br><br>
-						<p id="filename" style="text-align: center; color: black; font-size: 12px; font-family: 'Roboto Mono', monospace;">No file selected</p>
-						<input onchange="document.getElementById('filename').innerHTML = document.getElementById('file-upload').files.item(0).name;" id="file-upload" name='file' type="file"/>
-						<br><br>
-						<input type="submit" value="Look up">
-					</form>
-				</div>
-			</li>
-			<li>
-				<p class="madeBy" style="text-align: center; color: whitesmoke; font-size: 15px; font-family: 'Roboto Mono', monospace;">Made by Dannus - V1.0</p>
-			</li>
-		<ul>
-	</body>
+	<body class="leading-normal tracking-normal text-white gradient">
 
+		<section id="header">
+			<div class="pt-24">
+				<div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+
+					<div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+						<h1 class="my-4 text-5xl font-bold leading-tight" style="color: smokewhite">CMDTools</h1>
+						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">Install AdRewards now and forget about the financial worries of your project while rewarding your community!</p>
+						<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Download</button>
+					</div>
+					<div class="w-full md:w-3/5 py-6 text-center">
+						<img style="float: right;" class="w-full md:w-4/5 z-50" src="SVG/hero.svg">
+					</div>
+
+				</div>
+			</div>
+			<div class="relative -mt-12 lg:-mt-24">
+				<img src="svg/lines.svg">
+			</div>
+		</section>
+
+
+		<section id="body" class="bg-white border-b py-8">
+			<div class="container max-w-5xl mx-auto m-8">
+
+				<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color: #3d3d3d">CMDTools</h1>
+				<div class="w-full mb-4">
+				  <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+				</div>
+
+				<br>
+
+				<div class="flex flex-wrap">
+					<div class="w-5/6 sm:w-2/3 p-6">
+						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">A super simple way to increase your profits</h3>
+						<p class="text-gray-600 mb-8" style="color: #3d3d3d">As a server owner, it is often difficult to really get started because you don't really have players who want to spend money on your server yet, but you do have the financial responsibility. AdRewards tries to lighten this phase so that more servers really get a chance to develop. And all this while you do not take anything away from your community but you can reward them.</p>
+					</div>
+					<div class="w-full sm:w-1/3 p-6">
+						<img src="svg/create.svg">
+					</div>
+				</div>
+
+				<br><br>
+
+				<div class="flex flex-wrap">
+					<div class="w-full sm:w-1/3 p-6">
+						<img src="svg/read.svg">
+					</div>
+					<div class="w-full sm:w-2/3 p-6">
+						<div class="align-middle">
+						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">AdRewards is still in development</h3>
+						<p class="text-gray-600 mb-8" style="color: #3d3d3d">We are still working daily to make the experience of both the community owner and the users as perfect as possible! This includes new features, new designs and improvements and better performance of plugin, site and the communication between them. We try to do this as much as possible behind the scenes so you can just serve ads all day long!</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
 </html>
