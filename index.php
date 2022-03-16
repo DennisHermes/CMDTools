@@ -18,8 +18,8 @@
 
 					<div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
 						<h1 class="my-4 text-5xl font-bold leading-tight" style="color: smokewhite">CMDTools</h1>
-						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">Install AdRewards now and forget about the financial worries of your project while rewarding your community!</p>
-						<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Download</button>
+						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">With CMDTools you can add items to your server without overwriting another item!</p>
+						<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Create new items</button>
 					</div>
 					<div class="w-full md:w-3/5 py-6 text-center">
 						<img style="float: right;" class="w-full md:w-4/5 z-50" src="SVG/hero.svg">
@@ -42,6 +42,19 @@
 				</div>
 
 				<br>
+
+				<div class="flex flex-wrap">
+					<div class="w-full sm:w-1/2 p-6">
+						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">What is CMD?</h3>
+						<p class="text-gray-600 mb-8" style="color: #3d3d3d">As of version 1.16, Minecraft has added Custom Model Data (CMD). CMD assigns a model to items with that specific NBT data. It does not overwrite the original item, and can still have durability. So it adds a whole new item to your server without overwriting any other! This can therefore be used in any situation and opens up new possibilities. <br><br> What does CMDTools add? We think this feature has really great potential but it is not really accessible for everyone yet, you need to know quite a bit about programming and creating texture packs to be able to do this. CMDTools makes this as easy as possible in the hope that more people will use it and make really cool things with it.</p>
+						<a class="text-gray-600 mb-8" href="explained" style="color: #007bee; font-size: 20px;"><u>More on what CMD is? ></u></a>
+					</div>
+					<div class="w-full sm:w-1/2 p-6">
+						<img src="svg/about.svg">
+					</div>
+				</div>
+
+				<br><br><br><br><br><br><br><br><br><br>
 
 				<div class="flex flex-wrap">
 					<div class="w-5/6 sm:w-2/3 p-6">
