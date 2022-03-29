@@ -22,11 +22,11 @@
             <h4>Adrewards</h4>
         </div>
         <ul class="navLinks">
-            <li><a href="Index">Home</a></li>
-            <li><a href="Support">CMD explained</a></li>
-            <li><a href="Support">Plugins</a></li>
-            <li><a href="Dashboard">Read</a></li>
-            <li><a href="Instructions">Create</a></li>
+            <li><a href="index">Home</a></li>
+            <li><a href="cmdexplained">CMD explained</a></li>
+            <li><a href="plugins">Plugins</a></li>
+            <li><a href="read">Read</a></li>
+            <li><a href="create">Create</a></li>
         </ul>
         <div class="burger">
             <div class="line1"></div>

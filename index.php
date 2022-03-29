@@ -18,17 +18,17 @@
 
 					<div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
 						<h1 class="my-4 text-5xl font-bold leading-tight" style="color: smokewhite">CMDTools</h1>
-						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">With CMDTools you can add items to your server without overwriting another item!</p>
+						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">With CMDTools you can add items to your server without overwriting any other ones!</p>
 						<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Create new items</button>
 					</div>
 					<div class="w-full md:w-3/5 py-6 text-center">
-						<img style="float: right;" class="w-full md:w-4/5 z-50" src="SVG/hero.svg">
+						<img style="float: right;" class="w-full md:w-4/5 z-50" src="media/hero.svg">
 					</div>
 
 				</div>
 			</div>
 			<div class="relative -mt-12 lg:-mt-24">
-				<img src="svg/lines.svg">
+				<img src="media/lines.svg">
 			</div>
 		</section>
 
@@ -50,7 +50,7 @@
 						<a class="text-gray-600 mb-8" href="explained" style="color: #007bee; font-size: 20px;"><u>More on what CMD is? ></u></a>
 					</div>
 					<div class="w-full sm:w-1/2 p-6">
-						<img src="svg/about.svg">
+						<img src="media/about.svg">
 					</div>
 				</div>
 
@@ -62,7 +62,7 @@
 						<p class="text-gray-600 mb-8" style="color: #3d3d3d">As a server owner, it is often difficult to really get started because you don't really have players who want to spend money on your server yet, but you do have the financial responsibility. AdRewards tries to lighten this phase so that more servers really get a chance to develop. And all this while you do not take anything away from your community but you can reward them.</p>
 					</div>
 					<div class="w-full sm:w-1/3 p-6">
-						<img src="svg/create.svg">
+						<img src="media/create.svg">
 					</div>
 				</div>
 
@@ -70,7 +70,7 @@
 
 				<div class="flex flex-wrap">
 					<div class="w-full sm:w-1/3 p-6">
-						<img src="svg/read.svg">
+						<img src="media/read.svg">
 					</div>
 					<div class="w-full sm:w-2/3 p-6">
 						<div class="align-middle">
