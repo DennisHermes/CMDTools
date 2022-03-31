@@ -39,6 +39,7 @@ nav {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 25px;
+    font-weight: lighter;
 }
 
 .navLinks {
