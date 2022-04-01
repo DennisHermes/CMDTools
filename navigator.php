@@ -25,7 +25,7 @@
             <li><a href="index">Home</a></li>
             <li><a href="cmdexplained">CMD explained</a></li>
             <li><a href="plugins">Plugins</a></li>
-            <li><a href="open">Read</a></li>
+            <li><a href="View">View</a></li>
             <li><a href="create">Create</a></li>
         </ul>
         <div class="burger">
