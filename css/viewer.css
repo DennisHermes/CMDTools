@@ -7,6 +7,28 @@
     margin: auto !important;
 }
 
+body {
+    margin-top: 8vh;
+    font-family: 'Hubballi', cursive;
+    min-height: 100vh;
+    background: -webkit-gradient(linear, left bottom, left top, from(#5b1180), to(#c278c2));
+    background: -o-linear-gradient(bottom, #5b1180, #c278c2);
+    background: linear-gradient(to top, #5b1180, #c278c2);
+    background-attachment: fixed;
+    color: whitesmoke;
+}
+
+main {
+    position: absolute;
+    top: 8vh;
+}
+
+h1 {
+    font-family: 'Hubballi', cursive;
+    color: whitesmoke;
+    text-align: center;
+}
+
 table {
     width: 100%;
     table-layout: fixed;
@@ -42,15 +64,6 @@ td {
     border-bottom: solid 1px rgba(255,255,255,0.1);
 }
 
-body {
-    min-height: 100vh;
-    background: -webkit-gradient(linear, left bottom, left top, from(#8533bd), to(#c278c2));
-    background: -o-linear-gradient(bottom, #8533bd, #c278c2);
-    background: linear-gradient(to top, #8533bd, #c278c2);
-    color: whitesmoke;
-    font-family: 'Roboto Mono', monospace;
-}
-
 .topnav {
     display: flex;
     overflow: hidden;
@@ -71,7 +84,7 @@ body {
   text-decoration: none;
   font-size: 17px;
   border-bottom: 3px solid transparent;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Hubballi', cursive;
   cursor: pointer;
 }
 

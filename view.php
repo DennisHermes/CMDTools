@@ -27,7 +27,7 @@
 
 			<br><br><br><br>
 
-			<form action="fileReader.php" method="post" enctype="multipart/form-data">
+			<form action="viewer" method="post" enctype="multipart/form-data">
 				<label for="file-upload" class="upload">
 					<i class="fa fa-cloud-upload"></i> Select resource pack
 				</label>
@@ -41,6 +41,10 @@
 			</form>
 
 			<div class="bottomText">* CMDTools is not responsible for any copyright violations by using this tool.</div>
+		</div>
+
+		<div class="svgDiv">
+			<img style="float: right;" class="svg" src="media/read.svg">
 		</div>
 
 	</body>

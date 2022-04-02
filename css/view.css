@@ -98,3 +98,17 @@ input[type="file"] {
     padding: 10px 10px;
     font-size: 12px;
 }
+
+.svgDiv {
+    float: right;
+    width: 70vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg {
+    height: 50%;
+    width: 50%;
+}
