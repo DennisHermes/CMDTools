@@ -21,7 +21,7 @@
 					<div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
 						<h1 class="my-4 text-5xl font-bold leading-tight" style="color: smokewhite">CMDTools</h1>
 						<p class="leading-normal text-2xl mb-8" style="color: smokewhite">With CMDTools you can add items to your server without overwriting any other ones!</p>
-						<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Create new items</button>
+						<button onclick="window.location.href = 'plugins';" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="color: #3d3d3d"><i class="fa fa-download"></i> Create new items</button>
 					</div>
 					<div class="w-full md:w-3/5 py-6 text-center">
 						<img style="float: right;" class="w-full md:w-4/5 z-50" src="media/hero.svg">

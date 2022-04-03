@@ -1,0 +1,143 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hubballi', cursive;
+    min-height: 100vh;
+    background: -webkit-gradient(linear, left bottom, left top, from(#5b1180), to(#c278c2));
+    background: -o-linear-gradient(bottom, #5b1180, #c278c2);
+    background: linear-gradient(to top, #5b1180, #c278c2);
+    background-attachment: fixed;
+}
+
+main {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.7s ease;
+    transform: translateY(50px);
+}
+
+.container.fade {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.card {
+    background: white;
+    min-height: 80vh;
+    width: 30rem;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 10px rgba(0, 0, 0, 0.2), 0 0px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.35s ease;
+}
+
+.card:hover {
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0 0px 50px rgba(0, 0, 0, 0.2);
+    transition: all 0.35s ease;
+}
+
+.img img {
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+}
+
+.circle {
+    width: 15rem;
+    height: 15rem;
+    background: linear-gradient(to right bottom, #5b1180, #c278c2);
+    position: absolute;
+    border-radius: 50%;
+}
+
+.img {
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    margin: 10px 10px;
+}
+
+.info h1 {
+    font-size: 3rem;
+}
+
+.info h3 {
+    font-size: 1.5rem;
+    padding: 2rem 0rem;
+    color: #585858;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.next {
+    margin-top: 5rem;
+}
+
+.next button {
+    color: whitesmoke;
+    width: 80%;
+    padding: 1rem 0rem;
+    background-color: #9b3fba;
+    transition: all 0.2s ease-out;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+}
+
+.next button:hover {
+    background-color: #c278c2;
+    transition: all 0.2s ease-out;
+}
+
+
+
+.buttonBlock button {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+.buttonBlock button:hover {
+    background-color: gray;
+}
+
+.imgBlock {
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBlock img {
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+    filter: grayscale(100%);
+}
+
+.circleBlock {
+    width: 15rem;
+    height: 15rem;
+    background: linear-gradient(to right bottom, gray, lightgray);
+    position: absolute;
+    border-radius: 50%;
+}
