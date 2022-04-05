@@ -1,4 +1,13 @@
-<?php include 'navigator.php'; ?>
+<?php
+
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Location: view');
+        exit;
+    }
+
+   include 'navigator.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +25,7 @@
 		<main>
 			<?php
 
-				//error_reporting(0);
+				error_reporting(0);
 
 				//get the file
 				$file = $_FILES['file'];
@@ -143,7 +152,7 @@
 								echo '<td>'.$cmdCollector[$ref].'</td>';
 								echo '<td>'.$itemCollector[$ref].'</td>';
 								echo '<td>'.$ref.'</td>';
-								echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;">'.'</td>';
+								echo '<td>'.'<img style="image-rendering: pixelated;" src="'.$imgCollector[$ref].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;">'.'</td>';
 							}
 						}
 					?>
@@ -178,7 +187,7 @@
 												echo "<tr>";
 											}
 											echo '<td>'.$folder.'</td>';
-											echo '<td><img style="image-rendering: pixelated;" src="'.$filename.'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
+											echo '<td><img style="image-rendering: pixelated;" src="'.$filename.'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
 										}
 									}
 								}
@@ -219,7 +228,7 @@
 							$string0 = parse_ini_string($optiEnt[0]);
 							echo '<td>'.$optiEnt[1].'</td>';
 							echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.1'].'</td>'));
-							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$optiEnt[1].$string0['textures.1']].'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
+							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$optiEnt[1].$string0['textures.1']].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
 						}
 					?>
 				</table>
@@ -249,17 +258,17 @@
 								$charVal = "&zwnj;".$charArr[$i2];
 							}
 							echo '<td>'.str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($json0['providers'][$i]['chars'])))).'</td>';
-							echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="test" height="50" width="50" onerror="this.src=`notFound.png`;"></td>';
+							echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
 						}*/
 					?>
 				</table>
 			</div>
 
-			<div id="allDiv" style="display: none;">
+			<div id="allDiv" style="display: none; justify-content: center; width: 100vw;" >
 				<?php
 
 					foreach($imgCollector as $img) {
-						echo '<img style="image-rendering: pixelated;" src="'.$img.'" alt="test" height="50" width="50">';
+						echo '<img style="image-rendering: pixelated;" src="'.$img.'" alt="Texture" height="50" width="50">';
 					}
 
 				?>

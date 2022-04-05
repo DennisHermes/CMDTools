@@ -75,28 +75,18 @@ input[type=submit] {
     appearance: none;
 }
 
-input[type=submit]:hover {
-    background-color: #c278c2;
-}
-
-input[type="file"] {
-    display: none
-}
-
-.upload {
+input[type=text] {
+    font-family: 'roboto', Sans-Serif;
     border: 1px solid rgb(180, 180, 180);
     background-color: whitesmoke;
     display: inline-block;
     padding: 12px 24px;
-    cursor: pointer;
     border-radius: 7px;
+    margin: 3px 0px;
 }
 
-.bottomText {
-    position: absolute;
-    bottom: 0px;
-    padding: 10px 10px;
-    font-size: 12px;
+input[type=submit]:hover {
+    background-color: #c278c2;
 }
 
 .svgDiv {

@@ -19,7 +19,7 @@
 
 			<br><br><br>
 
-			<h1>Open CMD packs</h1>
+			<h1>View CMD packs</h1>
 
 			<br><br><br>
 
@@ -28,6 +28,8 @@
 			<br><br><br><br>
 
 			<form action="viewer" method="post" enctype="multipart/form-data">
+				<h3>View CMD pack</h3>
+				<br>
 				<label for="file-upload" class="upload">
 					<i class="fa fa-cloud-upload"></i> Select resource pack
 				</label>
@@ -44,7 +46,7 @@
 		</div>
 
 		<div class="svgDiv">
-			<img style="float: right;" class="svg" src="media/read.svg">
+			<img class="svg" src="media/read.svg">
 		</div>
 
 	</body>
