@@ -32,11 +32,11 @@
 				<br><br>
 				<p style="font-size: 18px;">Name:</p>
 				<br>
-				<input type="text" placeholder="CMD pack name...">
+				<input type="text" placeholder="CMD pack name..." required>
 				<br><br><br>
 				<p style="font-size: 18px;">CMD pack description:</p>
 				<br>
-				<input type="text" placeholder="First line...">
+				<input type="text" placeholder="First line..." required>
 				<input type="text" placeholder="Second line...">
 				<br>
 				<p style="font-size: 15px;">You can use color codes with '&'.</p>

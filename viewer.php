@@ -90,6 +90,7 @@
 						$imgCollector = array();
 						$cmdCollector = array();
 						$optiEntCollector = array();
+						$charCollector = array();
 						
 						//start reading zip
 						$zip = zip_open($dir);
@@ -111,13 +112,14 @@
 
 									//collect all references
 									} else if (substr($fileName, -5) === '.json') {
+										//CMD textures
 										if (!strpos(str_replace('assets/minecraft/models/item/', '', $fileName), "/")) {
 											$contents = zip_entry_read($zip_entry, $chuckSize);
 											$json0 = json_decode($contents, true);
 											$array = $json0['overrides'];
 											for ($i = 0; $i < count($array); $i++) {
 												//get all items
-												$modelReference = $json0['overrides'][$i]['model'];
+												$modelReference = $array[$i]['model'];
 												$pathList = explode("/", $modelReference);
 												$textureName = end($pathList);
 												array_push($referenceCollertor, $textureName);
@@ -128,9 +130,20 @@
 												$itemCollector[$textureName] = $item;
 
 												//get refering cmd
-												$cmdCollector[$textureName] = $json0['overrides'][$i]['predicate']['custom_model_data'];
+												$cmdCollector[$textureName] = $array[$i]['predicate']['custom_model_data'];
+											}
+										} else if (!strpos(str_replace('assets/minecraft/font/', '', $fileName), "/")) {
+											//Char textures
+											$contents = zip_entry_read($zip_entry, $chuckSize);
+											$json0 = json_decode($contents, true);
+											$array = $json0['providers'];
+											for ($i = 0; $i < count($array); $i++) {
+												$charName = str_replace('"', '', json_encode($array[$i]['chars'][0]));
+												$pathList = explode("/", $array[$i]['file']);
+												$charCollector[$charName] = str_replace('.png', '', end($pathList));
 											}
 										}
+									//Optifine mobs
 									} else if (substr($fileName, -11) === '.properties') {
 										$pathList = explode("/", $fileName);
 										$entName = str_replace('.properties', '', end($pathList));
@@ -140,7 +153,7 @@
 								zip_entry_close($zip_entry);
 							}
 							zip_close($zip);
-							
+
 							//glueing things together
 							$amount = 1;
 							foreach ($referenceCollertor as $ref) {
@@ -220,15 +233,19 @@
 					<?php
 						$amount = 1;
 						foreach ($optiEntCollector as $optiEnt) {
-							$amount++;
-							if ($amount % 2 == 0) {
-								echo "</tr>";
-								echo "<tr>";
-							}
 							$string0 = parse_ini_string($optiEnt[0]);
-							echo '<td>'.$optiEnt[1].'</td>';
-							echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.1'].'</td>'));
-							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$optiEnt[1].$string0['textures.1']].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
+							for ($i = 0; $i < count($string0); $i++) {
+								if ($string0['name.'.$i] !== null) {
+									$amount++;
+									if ($amount % 2 == 0) {
+										echo "</tr>";
+										echo "<tr>";
+									}
+									echo '<td>'.$optiEnt[$amount].'</td>';
+									echo '<td>'.str_replace("*", "", str_replace("ipattern:", "", $string0['name.'.$i].'</td>'));
+									echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$optiEnt[1].$string0['textures.'.$i]].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
+								}
+							}
 						}
 					?>
 				</table>
@@ -238,28 +255,25 @@
 				<table id="fontTable" style="width:40%;">
 					
 					<tr>
-						<td><b>Chars:</b></td>
+						<td><b>Char code:</b></td>
+						<td><b>Char name:</b></td>
 						<td><b>Found Texture:</b></td>
-						<td><b>Chars:</b></td>
+						<td><b>Char code:</b></td>
+						<td><b>Char name:</b></td>
 						<td><b>Found Texture:</b></td>
 					</tr>
 					<?php
-						/*$string0 = file_get_contents($filename);
-						$json0 = json_decode($string0, true);
-						$array = $json0['providers'];
-						for ($i = 0; $i < count($array); $i++) {
-							$amount4++;
-							if ($i % 2 == 0) {
+						$amount = 1;
+						foreach ($charCollector as $char) {
+							$amount++;
+							if ($amount % 2 == 0) {
+								echo "</tr>";
 								echo "<tr>";
 							}
-							
-							$charArr = str_split($json0['providers'][$i]['chars'][0]);
-							for ($i2 = 0; $i2 < count($charArr); $i2++) {
-								$charVal = "&zwnj;".$charArr[$i2];
-							}
-							echo '<td>'.str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($json0['providers'][$i]['chars'])))).'</td>';
-							echo '<td><img style="image-rendering: pixelated;" src="'.$dir.'/assets/minecraft/textures/'.str_replace("minecraft:", "", $json0['providers'][$i]['file']).'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
-						}*/
+							echo '<td>'.array_search ($char, $charCollector).'</td>';
+							echo '<td>'.$char.'</td>';
+							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$char].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;">'.'</td>';
+						}
 					?>
 				</table>
 			</div>
