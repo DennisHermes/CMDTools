@@ -25,7 +25,7 @@
 		<main>
 			<?php
 
-				error_reporting(0);
+				//error_reporting(0);
 
 				//get the file
 				$file = $_FILES['file'];
@@ -68,8 +68,6 @@
 
 			<div id="itemDiv">
 
-				<br><br>
-
 				<table style="width: 80%;">
 				
 					<tr>
@@ -91,6 +89,7 @@
 						$cmdCollector = array();
 						$optiEntCollector = array();
 						$charCollector = array();
+						$blockCollector = array();
 						
 						//start reading zip
 						$zip = zip_open($dir);
@@ -110,10 +109,18 @@
 										$textureName = str_replace(".png", "", end($pathList));
 										$imgCollector[$textureName] = $base64;
 
+										//Block textures
+										if (str_contains($fileName, 'assets/minecraft/textures/')) {
+											if (!str_contains($fileName, '/block/') && !str_contains($fileName, '/custom/')) {
+												$blockName = str_replace('.png', '', str_replace('assets/minecraft/textures/', '', $fileName));
+												array_push($blockCollector, $blockName);
+											}
+										}
+
 									//collect all references
 									} else if (substr($fileName, -5) === '.json') {
 										//CMD textures
-										if (!strpos(str_replace('assets/minecraft/models/item/', '', $fileName), "/")) {
+										if (!str_contains(str_replace('assets/minecraft/models/item/', '', $fileName), "/")) {
 											$contents = zip_entry_read($zip_entry, $chuckSize);
 											$json0 = json_decode($contents, true);
 											$array = $json0['overrides'];
@@ -132,7 +139,7 @@
 												//get refering cmd
 												$cmdCollector[$textureName] = $array[$i]['predicate']['custom_model_data'];
 											}
-										} else if (!strpos(str_replace('assets/minecraft/font/', '', $fileName), "/")) {
+										} else if (!str_contains(str_replace('assets/minecraft/font/', '', $fileName), "/")) {
 											//Char textures
 											$contents = zip_entry_read($zip_entry, $chuckSize);
 											$json0 = json_decode($contents, true);
@@ -184,36 +191,17 @@
 					</tr>
 				
 					<?php
-						/*try {
-							$di1 = new RecursiveDirectoryIterator($dir.'/assets/minecraft/textures');
-							$i = 1;
-							$amount2 = 0;
-							foreach (new RecursiveIteratorIterator($di1) as $filename => $file) {
-								if (substr($filename, -4) === '.png') {
-									$splited = explode('\\', dirname($file));
-									$folder = array_pop($splited);
-									if (strcmp($folder, "block")) {
-										if (strcmp($folder, "custom")) {
-											
-											$amount2++;
-											if ($i % 2 == 0) {
-												echo "<tr>";
-											}
-											echo '<td>'.$folder.'</td>';
-											echo '<td><img style="image-rendering: pixelated;" src="'.$filename.'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;"></td>';
-										}
-									}
-								}
-								$i++;
+						$amount = 1;
+						foreach ($blockCollector as $block) {
+							$amount++;
+							if ($amount % 2 == 0) {
+								echo "</tr>";
+								echo "<tr>";
 							}
-							if ($amount2 == 0) {
-								echo '<h3>No block textures found.</h3>';
-								echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
-							}
-						} catch (exception $e) {
-							echo '<h3>No block textures found.</h3>';
-							echo '<script>document.getElementById("blockTable").style.display = "none";</script>';
-						}*/
+							$pathList = explode("/", $block);
+							echo '<td>'.$block.'</td>';
+							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[end($pathList)].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;">'.'</td>';
+						}
 					?>
 				</table>
 			</div>
@@ -265,12 +253,11 @@
 					<?php
 						$amount = 1;
 						foreach ($charCollector as $char) {
-							$amount++;
 							if ($amount % 2 == 0) {
 								echo "</tr>";
 								echo "<tr>";
 							}
-							echo '<td>'.array_search ($char, $charCollector).'</td>';
+							echo '<td>'.array_search($char, $charCollector).'</td>';
 							echo '<td>'.$char.'</td>';
 							echo '<td><img style="image-rendering: pixelated;" src="'.$imgCollector[$char].'" alt="Not found" height="50" width="50" onerror="this.src=`media/notFound.png`;">'.'</td>';
 						}

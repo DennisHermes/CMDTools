@@ -23,7 +23,7 @@
 
 			<br><br><br>
 
-			<p>With this tool you can open your own or other existing CMD packs to see if they work correctly and contain the textures you want. It also allows you to copy textures from other CMD packs and to copy textures from resource packs for your own use.*</p>
+			<p>With this tool you can open your own or other existing CMD packs to see if they work correctly and contain the textures you want. It also allows you to copy textures from other CMD packs for your own use.*</p>
 
 			<br><br><br><br>
 

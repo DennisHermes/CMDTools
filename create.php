@@ -23,7 +23,7 @@
 
 			<br><br><br>
 
-			<p>With this tool you can create your own CMD packs. With this you can add any items you want to your Minecraft server. Add new food, armor, weapons, and so on! The possibilities are endless!</p>
+			<p>With this tool you can create your own CMD packs. With this you can add any items you want to your Minecraft server. Add new food, armor, weapons, and so on! The possibilities are endless! You can also add new entities, chat characters and blocks.</p>
 
 			<br><br><br><br>
 
