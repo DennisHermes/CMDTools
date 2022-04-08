@@ -4,6 +4,8 @@
 <html lang="en">
 
 	<head>
+
+		<title>CMDTools - Plugins</title>
 	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link href="https://fonts.googleapis.com/css2?family=Hubballi&family=Oxygen:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
