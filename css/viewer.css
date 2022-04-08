@@ -9,7 +9,7 @@
 
 body {
     margin-top: 8vh;
-    font-family: 'Hubballi', cursive;
+    font-family: 'Hubballi', cursive !important;
     min-height: 100vh;
     background: -webkit-gradient(linear, left bottom, left top, from(#5b1180), to(#c278c2));
     background: -o-linear-gradient(bottom, #5b1180, #c278c2);
@@ -24,7 +24,6 @@ main {
 }
 
 h1 {
-    font-family: 'Hubballi', cursive;
     color: whitesmoke;
     text-align: center;
 }

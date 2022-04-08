@@ -60,6 +60,16 @@ form {
     height: 92vh;
 }
 
+.slider {
+    transition: all 0.8s ease-out;
+    transform: translateX(-800px);
+    overflow: hidden;
+}
+
+.slideIn {
+    transform: translateX(0px);
+}
+
 input[type=submit] {
     font-family: 'roboto', Sans-Serif;
     text-align: center;
@@ -96,6 +106,12 @@ input[type=submit]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+}
+
+.svgDivShow {
+    opacity: 1;
 }
 
 .svg {
