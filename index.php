@@ -58,12 +58,19 @@
 					</div>
 				</div>
 
-				<br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br>
+
+				<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color: #3d3d3d">What can you do?</h1>
+				<div class="w-full mb-4">
+				  <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+				</div>
+
+				<br><br>
 
 				<div class="flex flex-wrap">
 					<div class="w-5/6 sm:w-2/3 p-6">
-						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">A super simple way to increase your profits</h3>
-						<p class="text-gray-600 mb-8" style="color: #3d3d3d">As a server owner, it is often difficult to really get started because you don't really have players who want to spend money on your server yet, but you do have the financial responsibility. AdRewards tries to lighten this phase so that more servers really get a chance to develop. And all this while you do not take anything away from your community but you can reward them.</p>
+						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">Create with CMDTools</h3>
+						<p class="text-gray-600 mb-8" style="color: #3d3d3d">With CMDTools you can super easily add a whole new set of features to your Minecraft server. You can add pretty much anything you can think of to your server without having to use plugins or mods. You can add new items without overwriting others, add new blocks, add new mobs and animals also without overwriting others and add new chat characters to add smileys for example.</p>
 					</div>
 					<div class="w-full sm:w-1/3 p-6">
 						<img src="media/create.svg">
@@ -78,8 +85,8 @@
 					</div>
 					<div class="w-full sm:w-2/3 p-6">
 						<div class="align-middle">
-						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">AdRewards is still in development</h3>
-						<p class="text-gray-600 mb-8" style="color: #3d3d3d">We are still working daily to make the experience of both the community owner and the users as perfect as possible! This includes new features, new designs and improvements and better performance of plugin, site and the communication between them. We try to do this as much as possible behind the scenes so you can just serve ads all day long!</p>
+						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">View existing CMD packs</h3>
+						<p class="text-gray-600 mb-8" style="color: #3d3d3d">With CMDTools you can also open existing CMD packs to see if your CMD pack was created correctly or if you are unsure if you added an item. You can also check what the CMD values, entity names and character codes were after creating a CMD pack. You can also view other people's CMD packs to copy textures for your own projects.</p>
 					</div>
 				</div>
 			</div>
