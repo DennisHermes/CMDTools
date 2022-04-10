@@ -1,0 +1,91 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Hubballi', cursive;
+    min-height: 100vh;
+    background: -webkit-gradient(linear, left bottom, left top, from(#5b1180), to(#c278c2));
+    background: -o-linear-gradient(bottom, #5b1180, #c278c2);
+    background: linear-gradient(to top, #5b1180, #c278c2);
+    background-attachment: fixed;
+}
+
+.box1 {
+    flex-direction: row;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
+}
+
+.box1.fade {
+    height: 30vh;
+}
+
+.box1 li {
+    list-style: none;
+}
+
+.box2 {
+    height: 0vh;
+    transition: all 0.5s ease;
+    opacity: 0;
+    display: none;
+}
+
+.box2.fade {
+    height: 40vh;
+    opacity: 1;
+}
+
+.title {
+    color: whitesmoke;
+    font-weight: lighter;
+    font-size: 4vmax;
+    text-align: center;
+    line-height: 4vmax;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.title.fade {
+    opacity: 1;
+}
+
+.card {
+    background: linear-gradient(
+        to left top,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 1rem;
+    margin: 2rem 0rem;
+    padding: 1rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.121);
+    width: 60vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card h3 {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.card img {
+    height: 5vw;
+    width: 5vw;
+}
+
+.card-info {
+    max-width: 70%;
+}

@@ -71,6 +71,7 @@
 					<div class="w-5/6 sm:w-2/3 p-6">
 						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">Create with CMDTools</h3>
 						<p class="text-gray-600 mb-8" style="color: #3d3d3d">With CMDTools you can super easily add a whole new set of features to your Minecraft server. You can add pretty much anything you can think of to your server without having to use plugins or mods. You can add new items without overwriting others, add new blocks, add new mobs and animals also without overwriting others and add new chat characters to add smileys for example.</p>
+						<a class="text-gray-600 mb-8" href="create" style="color: #007bee; font-size: 20px;"><u>Start creating your perfect server ></u></a>
 					</div>
 					<div class="w-full sm:w-1/3 p-6">
 						<img src="media/create.svg">
@@ -84,9 +85,9 @@
 						<img src="media/read.svg">
 					</div>
 					<div class="w-full sm:w-2/3 p-6">
-						<div class="align-middle">
 						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">View existing CMD packs</h3>
 						<p class="text-gray-600 mb-8" style="color: #3d3d3d">With CMDTools you can also open existing CMD packs to see if your CMD pack was created correctly or if you are unsure if you added an item. You can also check what the CMD values, entity names and character codes were after creating a CMD pack. You can also view other people's CMD packs to copy textures for your own projects.</p>
+						<a class="text-gray-600 mb-8" href="view" style="color: #007bee; font-size: 20px;"><u>Take a look how it works ></u></a>
 					</div>
 				</div>
 			</div>
