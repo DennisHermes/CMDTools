@@ -25,7 +25,7 @@
         </div>
         <ul class="navLinks">
             <li><a href="index">Home</a></li>
-            <li><a href="cmdexplained">CMD explained</a></li>
+            <li><a href="guides">Guides</a></li>
             <li><a href="plugins">Plugins</a></li>
             <li><a href="View">View</a></li>
             <li><a href="create">Create</a></li>

@@ -181,3 +181,12 @@ button:hover {
 button:disabled {
     background-color: #9c9c9c;
 }
+
+.disabled-button {
+    background-color: #9c9c9c;
+    cursor: not-allowed;
+}
+
+.disabled-button:hover {
+    background-color: #9c9c9c;
+}
