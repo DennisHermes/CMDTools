@@ -5,7 +5,7 @@
         //exit;
     }
 
-   include 'navigator.php';
+   include 'shared/navigator.php';
 
 ?>
 
@@ -375,3 +375,7 @@
 	</body>
 
 </html>
+
+<?php 
+	include 'shared/footer.php'; 
+?>

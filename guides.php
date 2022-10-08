@@ -1,4 +1,6 @@
-<?php include 'navigator.php'; ?>
+<?php 
+	include 'shared/navigator.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,3 +20,7 @@
 	</body>
 
 </html>
+
+<?php 
+	include 'shared/footer.php'; 
+?>

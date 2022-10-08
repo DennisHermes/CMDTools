@@ -1,4 +1,6 @@
-<?php include 'navigator.php'; ?>
+<?php 
+	include 'shared/navigator.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +53,7 @@
 					<div class="w-full sm:w-1/2 p-6">
 						<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3" style="color: #3d3d3d">What is CMD?</h3>
 						<p class="text-gray-600 mb-8" style="color: #3d3d3d">As of version 1.16, Minecraft has added Custom Model Data (CMD). CMD assigns a model to items with that specific NBT data. It does not overwrite the original item, and can still have durability. So it adds a whole new item to your server without overwriting any other! This can therefore be used in any situation and opens up new possibilities. <br><br> What does CMDTools add? We think this feature has really great potential but it is not really accessible for everyone yet, you need to know quite a bit about programming and creating texture packs to be able to do this. CMDTools makes this as easy as possible in the hope that more people will use it and make really cool things with it.</p>
-						<a class="text-gray-600 mb-8" href="cmdexplained" style="color: #007bee; font-size: 20px;"><u>More on what CMD is? ></u></a>
+						<a class="text-gray-600 mb-8" href="guides" style="color: #007bee; font-size: 20px;"><u>More on what CMD is? ></u></a>
 					</div>
 					<div class="w-full sm:w-1/2 p-6">
 						<img src="media/about.svg">
@@ -94,3 +96,7 @@
 		</section>
 	</body>
 </html>
+
+<?php 
+	include 'shared/footer.php'; 
+?>

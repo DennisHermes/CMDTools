@@ -1,4 +1,6 @@
-<?php include 'navigator.php'; ?>
+<?php 
+	include 'shared/navigator.php'; 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@
 					</div>
 					<div class="info">
 						<h1 class="title">SetCMD</h1>
-						<h3>This plugin is extremely lightweight but only contains the commands '/setcmd [CMD]' to change the texture of the item in your hand and '/site' to get a link to this site.</h3>
+						<h3>This plugin is extremely lightweight but only contains the commands '/setcmd [CMD]' to change the texture of the item in your hand and '/cmdsite' to get a link to this site.</h3>
 						<div class="next">
 							<button onclick="window.location.href = 'installing';"><span class="iconify" data-icon="fa:download"></span> Download</button>
 						</div>
@@ -43,7 +45,7 @@
 					</div>
 					<div class="info">
 						<h1 class="title">CMDTools</h1>
-						<h3>The list of all the commands and explanation of what it does.</h3>
+						<h3>With CMDTool</h3>
 						<div class="next buttonBlock">
 							<button><span class="iconify" data-icon="fa:download"></span> Available soon</button>
 						</div>
@@ -59,3 +61,7 @@
 	</body>
 
 </html>
+
+<?php 
+	include 'shared/footer.php'; 
+?>
