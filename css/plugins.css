@@ -141,3 +141,40 @@ main {
     position: absolute;
     border-radius: 50%;
 }
+
+
+
+.card3 {
+    background: linear-gradient(to bottom right, rgb(250, 245, 220) 45%, white 50%, rgb(250, 245, 220) 55%);
+}
+
+.buttonPremium button {
+    color: black;
+    cursor: not-allowed;
+    background: linear-gradient(to bottom right, rgb(255, 174, 0), rgb(255, 230, 0), rgb(255, 230, 0), rgb(255, 174, 0));
+}
+
+.buttonPremium button:hover {
+    background-color: goldenrod;
+}
+
+.imgPremium {
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgPremium img {
+    width: 10rem;
+    height: 10rem;
+    z-index: 1;
+}
+
+.circlePremium {
+    width: 15rem;
+    height: 15rem;
+    background: linear-gradient(to bottom right, rgb(255, 174, 0), rgb(255, 255, 100), rgb(255, 174, 0));
+    position: absolute;
+    border-radius: 50%;
+}

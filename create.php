@@ -62,7 +62,3 @@
 	</body>
 
 </html>
-
-<?php 
-	include 'shared/footer.php'; 
-?>

@@ -45,8 +45,23 @@
 					</div>
 					<div class="info">
 						<h1 class="title">CMDTools</h1>
-						<h3>With CMDTool</h3>
+						<h3>with CMDTools you can use the simple functions of SetCMD but you can also add your own crafting recipes. This allows you to create a completely new experience from your server!</h3>
 						<div class="next buttonBlock">
+							<button><span class="iconify" data-icon="fa:download"></span> Available soon</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="container3" style="display: none;">
+				<div class="card card3">
+					<div class="imgPremium">
+					<div class="circlePremium"></div>
+						<img src="media/premium.svg" alt="Commands">
+					</div>
+					<div class="info">
+						<h1 class="title">CMDTools</h1>
+						<h3>with CMDTools you can use the simple functions of SetCMD but you can also add your own crafting recipes. This allows you to create a completely new experience from your server!</h3>
+						<div class="next buttonPremium">
 							<button><span class="iconify" data-icon="fa:download"></span> Available soon</button>
 						</div>
 					</div>
@@ -61,7 +76,3 @@
 	</body>
 
 </html>
-
-<?php 
-	include 'shared/footer.php'; 
-?>
