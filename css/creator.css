@@ -190,3 +190,9 @@ button:disabled {
 .disabled-button:hover {
     background-color: #9c9c9c;
 }
+
+.display {
+    font-family: 'MinecraftiaRegular';
+    font-size: 13px;
+    text-align: left;
+}

@@ -1,11 +1,11 @@
 <?php
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        //header('Location: create');
+        //header('Location: ../create');
         //exit;
     }
 
-   include 'shared/navigator.php';
+   include 'navigator.php';
 
 ?>
 
@@ -17,8 +17,10 @@
 		<title>CMDTools - Create</title>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/minecraftia" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css2?family=Hubballi&family=Oxygen:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="css/creator.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="../css/creator.css" />
 
         <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
@@ -35,7 +37,7 @@
         <div id="box2" class="box2">
 
             <div id="item" class="card" onclick="openCreator('item');">
-                <img src="media/item.png" alt="" />
+                <img src="../media/item.png" alt="" />
                 <div class="card-info">
                     <h2>Add an item</h2>
                 </div>
@@ -43,7 +45,7 @@
             </div>
 
             <div id="entity" class="card" onclick="openCreator('entity');">
-                <img style="width: 3.5vw" src="media/entity.png" alt="" />
+                <img style="width: 3.5vw" src="../media/entity.png" alt="" />
                 <div class="card-info">
                     <h2>Add an entity</h2>
                 </div>
@@ -51,7 +53,7 @@
             </div>
 
 			<div id="block" class="card" onclick="openCreator('block');">
-                <img src="media/block.png" alt="" />
+                <img src="../media/block.png" alt="" />
                 <div class="card-info">
                     <h2>Add a block</h2>
                 </div>
@@ -60,8 +62,8 @@
 
             <br><br>
 
-            <div id="tools" class="card" onclick="openCreator('tools');">
-                <img src="media/tools.png" alt="" />
+            <div id="tools" class="card" onclick="openCreator('tools'); createDisplay();">
+                <img src="../media/tools.png" alt="" />
                 <div class="card-info">
                     <h2>Save & preview</h2>
                 </div>
@@ -82,7 +84,7 @@
             <input list="itemList" id="itemID" autocomplete="off" onchange="itemCheck();" required>
             <datalist id="itemList">
                 <?php 
-                    $contents = file("lists/1.18/items.txt");
+                    $contents = file("../lists/1.19/items.txt");
                     $items = array();
                     foreach($contents as $line) {
                         array_push($items, $line);
@@ -116,7 +118,7 @@
             <input onchange="document.getElementById('itemNameUpload').innerHTML = document.getElementById('itemTexture').files.item(0).name; itemCheck();" id="itemTexture" type="file" accept=".png" required/>
             <br>
             <button onclick="back('item');">🠔 Back</button>
-            <button id="addItemButton" onclick="addItem();" disabled>Add item ➕</button>
+            <button id="addItemButton" onclick="addItem();" disabled>Add item +</button>
         </div>
 
         <div id="entityDiv" class="divs">
@@ -130,7 +132,7 @@
             <input list="entityList" id="entityID" autocomplete="off" onchange="entityCheck();" required>
             <datalist id="entityList">
                 <?php 
-                    $contents = file("lists/1.18/entities.txt");
+                    $contents = file("../lists/1.19/entities.txt");
                     $entities = array();
                     foreach($contents as $line) {
                         array_push($entities, $line);
@@ -164,7 +166,7 @@
             <input onchange="document.getElementById('entityNameUpload').innerHTML = document.getElementById('entityTexture').files.item(0).name; entityCheck();" id="entityTexture" type="file" accept=".png" required/>
             <br>
             <button onclick="back('entity');">🠔 Back</button>
-            <button id="addEntityButton" onclick="addEntity();" disabled>Add entity ➕</button>
+            <button id="addEntityButton" onclick="addEntity();" disabled>Add entity +</button>
         </div>
 
         <div id="blockDiv" class="divs">
@@ -177,7 +179,7 @@
             <input list="entityList" id="entityID" autocomplete="off" onchange="entityCheck();" required>
             <datalist id="entityList">
                 <?php 
-                    $contents = file("lists/1.18/blocks.txt");
+                    $contents = file("../lists/1.19/blocks.txt");
                     $entities = array();
                     foreach($contents as $line) {
                         array_push($entities, $line);
@@ -211,11 +213,19 @@
             <input onchange="document.getElementById('entityNameUpload').innerHTML = document.getElementById('entityTexture').files.item(0).name; entityCheck();" id="entityTexture" type="file" accept=".png" required/>
             <br>
             <button onclick="back('entity');">🠔 Back</button>
-            <button id="addEntityButton" onclick="addEntity();" disabled>Add entity ➕</button>
+            <button id="addEntityButton" onclick="addEntity();" disabled>Add entity +</button>
         </div>
 
         <div id="toolsDiv" class="divs">
+            <h2>Display preview</h2>
             <br>
+            <img style="float: left; width: 25%; margin-right: 8px;" src="../media/block.png"></img>
+            <div style="float: left;">
+                <h3 id="displayTitle" class="display" style="font-size: 18px;"><?php echo $_POST["title"]; ?></h3>
+                <p id="displayLine1" class="display"><?php echo $_POST["line1"]; ?></p>
+                <p id="displayLine2" class="display"><?php echo $_POST["line2"]; ?></p>
+            </div>
+            <br><br><br><br><br><br><br>
             <h2>Implemented textures</h2>
             <br>
             <button style="width: 95%;" onclick="console.log(sessionStorage.getItem('Items'));">Custom items 🠖</button>
@@ -269,21 +279,20 @@
             
             function addItem() {
                 var uuid = randomString(5);
-                if (sessionStorage.getItem('Items') != null) {
-                    var items = sessionStorage.getItem('Items') + uuid + ",";
+                if (localStorage.getItem('Items') != null) {
+                    var items = localStorage.getItem('Items') + uuid + ",";
                 } else {
                     var items = uuid + ",";
                 }
 
-                sessionStorage.setItem(uuid + ".ITEM", document.getElementById('itemID').value);
-                sessionStorage.setItem(uuid + ".CMD", document.getElementById('itemCMD').value);
-                sessionStorage.setItem(uuid + ".TEXTURE", document.getElementById('itemTexture').value);
-                sessionStorage.setItem("Items", items);
-                
-                console.log(sessionStorage.getItem('Items'));
-                console.log(sessionStorage.getItem(uuid + ".ITEM"));
-                console.log(sessionStorage.getItem(uuid + ".TEXTURE"));
-                console.log(sessionStorage.getItem(uuid + ".CMD"));
+                $.ajax({
+                    type: "POST",
+                    url: "../creatorStorage/addItem.php",
+                    data: {"ID": document.getElementById('itemID').value, "CMD": document.getElementById('itemCMD').value, "Texture": document.getElementById('itemTexture').value},
+                    success: function(data) {
+                        alert(data);
+                    }
+                });
             }
 
             function addEntity() {
@@ -366,10 +375,19 @@
                 for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
                 return result;
             }
+
+            function createDisplay() {
+                document.getElementById("displayTitle").innerHTML = mineParse("<?php echo $_POST["title"] ?>");
+                document.getElementById("displayLine1").innerHTML = mineParse("<?php echo $_POST["line1"] ?>");
+                document.getElementById("displayLine2").innerHTML = mineParse("<?php echo $_POST["line2"] ?>");
+            }
         </script>
 
         <script>
-            <?php include 'js/creator.js'; ?>
+            <?php 
+                include '../js/creator.js';  
+                include '../js/minePrase.js';
+            ?>
         </script>
 
 	</body>

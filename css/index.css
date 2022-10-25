@@ -28,12 +28,31 @@ footer {
     color: white;
 }
 
-.div1 {
-    float: left;
-    width: 50%;
+footer h1 {
+    font-size: 25px;
+    font-weight: bold;
 }
 
-.div2 {
-    float: right;
-    width: 50%;
+footer h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer a {
+    text-decoration: underline;
+}
+
+.footerDiv1 {
+    float: left;
+    width: 33.33%;
+}
+
+.footerDiv2 {
+    float: left;
+    width: 33.33%;
+}
+
+.footerDiv3 {
+    float: left;
+    width: 33.33%;
 }

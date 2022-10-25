@@ -62,7 +62,7 @@
 
 				<br><br><br><br><br><br><br>
 
-				<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color: #3d3d3d">What can you do?</h1>
+				<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color: #3d3d3d">What to do here?</h1>
 				<div class="w-full mb-4">
 				  <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
 				</div>
@@ -97,20 +97,25 @@
 	</body>
 
 	<footer>
-    <br>
-        <div class="div1">
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+    	<br>
+		<h1>What are you looking for?</h1>
+		<br>
+        <div class="footerDiv1">
+			<h2>Find the plugin that suits your server:</h2>
+			<p>Few features, lots of potential: <a href="www.google.com">SetCMD</a></p>
+			<p>Everything you want from CMDTools: <a href="www.google.com">CMDTools</a></p>
         </div>
-        <div class="div2">
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        <div class="footerDiv2">
+			<h2>Can't figure it out?</h2>
+			<p>Look at our guides: <a href="/help/guides">Guides</a></p>
+			<p>Or ask your question: <a href="/help/contact">Contact</a></p>
         </div>
-        <br><br><br>
+		<div class="footerDiv3">
+			<h2>Our toolbox for your use!</h2>
+			<p>Look at our guides: <a href="/create">Create CMDPack</a></p>
+			<p>Look at our guides: <a href="/view">View CMDPack</a></p>
+        </div>
+        <br><br><br><br><br>
         <p>© CMDTools</p>
     </footer>
 

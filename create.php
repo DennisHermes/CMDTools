@@ -32,17 +32,17 @@
 
 				<br><br><br><br>
 
-				<form action="creator" method="post" enctype="multipart/form-data">
+				<form action="tools/creator" method="post" enctype="multipart/form-data">
 					<h3>Create CMD pack</h3>
 					<br><br>
 					<p style="font-size: 18px;">Name:</p>
 					<br>
-					<input type="text" placeholder="CMD pack name..." required>
+					<input type="text" name="title" placeholder="CMD pack name..." required>
 					<br><br><br>
 					<p style="font-size: 18px;">CMD pack description:</p>
 					<br>
-					<input type="text" placeholder="First line..." required>
-					<input type="text" placeholder="Second line...">
+					<input type="text" name="line1" placeholder="First line..." required>
+					<input type="text" name="line2" placeholder="Second line...">
 					<br>
 					<p style="font-size: 15px;">You can use color codes with '&'.</p>
 					<br><br><br>
