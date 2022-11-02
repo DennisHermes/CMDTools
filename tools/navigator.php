@@ -24,11 +24,11 @@
             <h4>CMDTools</h4>
         </div>
         <ul class="navLinks">
-            <li><a href="index">Home</a></li>
-            <li><a href="help">Help</a></li>
-            <li><a href="plugins">Plugins</a></li>
-            <li><a href="View">View</a></li>
-            <li><a href="create">Create</a></li>
+            <li><a href="../index">Home</a></li>
+            <li><a href="../help">Help</a></li>
+            <li><a href="../plugins">Plugins</a></li>
+            <li><a href="../view">View</a></li>
+            <li><a href="../create">Create</a></li>
         </ul>
         <div class="burger">
             <div class="line1"></div>

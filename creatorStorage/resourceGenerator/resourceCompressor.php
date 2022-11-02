@@ -2,9 +2,9 @@
 
     session_start();
 
-    $packName = 'test';
-    $description1 = 'Line 1';
-    $description2 = 'Line 2';
+    $packName = $_POST["title"];
+    $description1 = str_replace("&", "§", $_POST["line1"]);
+    $description2 = str_replace("&", "§", $_POST["line2"]);
 
     //Create tmp dirs
     $path = getcwd()."/".$packName;
@@ -23,10 +23,16 @@
     mkdir($path."/assets/minecraft/optifine/random");
     mkdir($path."/assets/minecraft/optifine/random/entity");
 
+    //Setup packmeta
+    $itemFile = fopen($path."/pack.mcmeta", 'w');
+    $txt = '{"pack":{"pack_format":9,"description":"'.$description1.'\n'.$description2.'"}}';
+    fwrite($itemFile, str_replace("'", '"', $txt));
+    fclose($itemFile);
+
     //add items
     $items = $_SESSION["Items"];
     foreach($items as $item) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
         $uuid = '';
         for ($i = 0; $i < 5; $i++) {
             $uuid .= $characters[rand(0, strlen($characters) - 1)];
@@ -68,6 +74,8 @@
     $zip->close();
     ob_clean();
     ob_end_flush();
+
+    //Send zip packet
     header("Content-type: application/zip"); 
     header("Content-Disposition: attachment; filename=".$packName.".zip");
     header("Content-length: ".filesize($archive_file_name));

@@ -6,26 +6,26 @@
         obfuscators = {},
         alreadyParsed = [],
         styleMap = {
-            '§0': 'color:#000000',
-            '§1': 'color:#0000AA',
-            '§2': 'color:#00AA00',
-            '§3': 'color:#00AAAA',
-            '§4': 'color:#AA0000',
-            '§5': 'color:#AA00AA',
-            '§6': 'color:#FFAA00',
-            '§7': 'color:#AAAAAA',
-            '§8': 'color:#555555',
-            '§9': 'color:#5555FF',
-            '§a': 'color:#55FF55',
-            '§b': 'color:#55FFFF',
-            '§c': 'color:#FF5555',
-            '§d': 'color:#FF55FF',
-            '§e': 'color:#FFFF55',
-            '§f': 'color:#FFFFFF',
-            '§l': 'font-weight:bold',
-            '§m': 'text-decoration:line-through',
-            '§n': 'text-decoration:underline',
-            '§o': 'font-style:italic'
+            '&0': 'color:#000000',
+            '&1': 'color:#0000AA',
+            '&2': 'color:#00AA00',
+            '&3': 'color:#00AAAA',
+            '&4': 'color:#AA0000',
+            '&5': 'color:#AA00AA',
+            '&6': 'color:#FFAA00',
+            '&7': 'color:#AAAAAA',
+            '&8': 'color:#555555',
+            '&9': 'color:#5555FF',
+            '&a': 'color:#55FF55',
+            '&b': 'color:#55FFFF',
+            '&c': 'color:#FF5555',
+            '&d': 'color:#FF55FF',
+            '&e': 'color:#FFFF55',
+            '&f': 'color:#FFFFFF',
+            '&l': 'font-weight:bold',
+            '&m': 'text-decoration:line-through',
+            '&n': 'text-decoration:underline',
+            '&o': 'font-style:italic'
         };
 
     function obfuscate(elem, string) {
@@ -83,7 +83,7 @@
 
         codes.forEach(function (code) {
             elem.style.cssText += styleMap[code] + ';';
-            if (code === '§k') {
+            if (code === '&k') {
                 obfuscate(elem, string);
                 obfuscated = true;
             }
@@ -96,7 +96,7 @@
 
     function parseStyle(string) {
         var finalPre = document.createElement('pre'),
-            codes = string.match(/§.{1}/g) || [],
+            codes = string.match(/&.{1}/g) || [],
             codesLen = codes.length,
             indexes = [],
             indexDelta,
@@ -129,8 +129,8 @@
             } else {
                 apply.push(codes[i]);
             }
-            if (apply.lastIndexOf('§r') > -1) {
-                apply = apply.slice(apply.lastIndexOf('§r') + 1);
+            if (apply.lastIndexOf('&r') > -1) {
+                apply = apply.slice(apply.lastIndexOf('&r') + 1);
             }
             strSlice = string.substring(indexes[i], indexes[i + 1]);
             finalPre.appendChild(applyCode(strSlice, apply));

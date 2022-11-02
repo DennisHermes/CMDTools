@@ -221,9 +221,9 @@
             <br>
             <img style="float: left; width: 25%; margin-right: 8px;" src="../media/block.png"></img>
             <div style="float: left;">
-                <h3 id="displayTitle" class="display" style="font-size: 18px;"><?php echo $_POST["title"]; ?></h3>
-                <p id="displayLine1" class="display"><?php echo $_POST["line1"]; ?></p>
-                <p id="displayLine2" class="display"><?php echo $_POST["line2"]; ?></p>
+                <h3 id="displayTitle" class="display" style="font-size: 18px;"></h3>
+                <p id="displayLine1" class="display"></p>
+                <p id="displayLine2" class="display"></p>
             </div>
             <br><br><br><br><br><br><br>
             <h2>Implemented textures</h2>
@@ -236,12 +236,18 @@
             <br><br>
             <h2>Export texturepack</h2>
             <br>
-            <button style="width: 95%;">Export as resourcepack</button>
+            <button style="width: 95%;" onclick="exportRP();">Export as resourcepack <span class="iconify" data-icon="fontisto:export"></span></button>
             <br><br>
-            <button class="disabled-button" title="Coming Soon!" style="width: 95%;">Instant upload to your server</button>
+            <button class="disabled-button" title="Coming Soon!" style="width: 95%;">Instant upload to your server <span class="iconify" data-icon="akar-icons:cloud-upload"></span></button>
             <br><br><br>
             <button onclick="back('tools');">🠔 Back</button>
         </div>
+
+        <form id="exportData" style="display: none;" action="../creatorStorage/resourceGenerator/resourceCompressor.php" method="post">
+            <input type="text" name="title" value="<?php echo $_POST["title"] ?>">
+            <input type="text" name="line1" value="<?php echo $_POST["line1"] ?>">
+            <input type="text" name="line2" value="<?php echo $_POST["line2"] ?>">
+        </form>
 
         <script>
             let allowedItems = [
@@ -278,20 +284,10 @@
             }
             
             function addItem() {
-                var uuid = randomString(5);
-                if (localStorage.getItem('Items') != null) {
-                    var items = localStorage.getItem('Items') + uuid + ",";
-                } else {
-                    var items = uuid + ",";
-                }
-
                 $.ajax({
                     type: "POST",
                     url: "../creatorStorage/addItem.php",
                     data: {"ID": document.getElementById('itemID').value, "CMD": document.getElementById('itemCMD').value, "Texture": document.getElementById('itemTexture').value},
-                    success: function(data) {
-                        alert(data);
-                    }
                 });
             }
 
@@ -377,9 +373,13 @@
             }
 
             function createDisplay() {
-                document.getElementById("displayTitle").innerHTML = mineParse("<?php echo $_POST["title"] ?>");
-                document.getElementById("displayLine1").innerHTML = mineParse("<?php echo $_POST["line1"] ?>");
-                document.getElementById("displayLine2").innerHTML = mineParse("<?php echo $_POST["line2"] ?>");
+                document.getElementById("displayTitle").innerHTML = mineParse("<?php echo $_POST["title"] ?>").raw;
+                document.getElementById("displayLine1").innerHTML = mineParse("<?php echo $_POST["line1"] ?>").raw;
+                document.getElementById("displayLine2").innerHTML = mineParse("<?php echo $_POST["line2"] ?>").raw;
+            }
+
+            function exportRP() {
+                document.getElementById("exportData").submit();
             }
         </script>
 
