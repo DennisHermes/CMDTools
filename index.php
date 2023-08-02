@@ -1,5 +1,5 @@
 <?php 
-	include 'shared/navigator.php'; 
+	include 'shared/navigator.html'; 
 ?>
 
 <!DOCTYPE html>
