@@ -1,58 +1,246 @@
 body {
-    font-family: 'Hubballi', cursive !important;
+    background: linear-gradient(135deg, #8917b3, #c975e6, #c975e6);
 }
 
-.gradient {
-    background: linear-gradient(90deg, #5b1180 0%, #c278c2 100%);
+.left {
+    position: relative;
+    float: left;
+    width: 40%;
+    height: 60vh;
+    margin-top: 100px;
+    margin-left: 3%;
+    color: whitesmoke;
+    text-shadow: #3d3d3d 2px 2px 2px;
+    text-align: center;
+    padding-top: 100px;
 }
 
-.img {
-    width: 75%;
-    height: 75%;
+.left h1 {
+    font-size: 300%;
+}
+
+.right {
+    padding: 8vh;
+    display: flex;
+    justify-content: center;
+    float: right;
+    width: 57%;
+    height: 60vh;
+}
+
+.cta {
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding: 18px;
+    font-size: 18px;
+    border: 0px solid transparent;
+    box-shadow: #3d3d3d 2px 2px 2px;
+    cursor: pointer;
+    word-spacing: 1px;
+    transition: all 0.3s ease 0s;
+}
+
+.cta:hover {
+    word-spacing: 6px;
+    box-shadow: #3d3d3d 3px 3px 3px;
+}
+
+.hero {
     display: block;
-    margin: auto auto;
+    margin: auto;
+    margin-top: 60px;
+    height: 130%;
 }
 
-.rotate180 {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
+.logo1 {
+    padding: 8px;
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+
+main {
+    padding: 0;
+    margin: 0;
+    display: absolute;
+    height: fit-content;
+    width: 100vw;
+    max-width: 100%;
+    background: linear-gradient(white, whitesmoke);
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 4rem;
+    color: #3d3d3d;
+    margin-bottom: 2rem;
+    font-weight: bolder;
+    background: #50bc14;
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.big p {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 15px;
+}
+
+main a {
+    text-align: left;
+    font-size: 1.2rem;
+    margin: 10px;
+    text-decoration: none;
+}
+
+h3 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.button {
+    background-color: #3f9411;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: absolute;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 13px 16px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    width: 20%;
+    margin: 5px;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.button:after {
+    background-clip: padding-box;
+    background-color: #50bc14;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.button:hover {
+    filter: brightness(1.1);
+}
+
+.bigSmallWrapper {
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 30vh;
+    margin: auto;
+}
+
+.small {
+    display: relative;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+    float: left;
+}
+
+.big {
+    display: relative;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+    float: left;
+}
+
+.display {
+    display: block;
+    margin: auto;
+    height: 100%;
 }
 
 footer {
-    text-align: center;
-    padding: 3px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #3d3d3d;
     color: white;
+    text-align: center;
+    padding: 8px;
 }
 
-footer h1 {
-    font-size: 25px;
-    font-weight: bold;
+
+@media screen and (max-width: 1200px) {
+    .bigSmallWrapper {
+        width: 70%;
+    }
 }
 
-footer h2 {
-    font-size: 20px;
-    font-weight: bold;
-}
+@media screen and (max-width: 900px) {
+    .left {
+        width: 100%;
+        display: relative;
+        margin-left: 100px;
+    }
 
-footer a {
-    text-decoration: underline;
-}
+    .right {
+        display: none;
+    }
 
-.footerDiv1 {
-    float: left;
-    width: 33.33%;
-}
+    .bigSmallWrapper {
+        width: 90%;
+    }
 
-.footerDiv2 {
-    float: left;
-    width: 33.33%;
-}
+    .display {
+        height: 40%;
+    }
 
-.footerDiv3 {
-    float: left;
-    width: 33.33%;
+    .big {
+        width: 80%;
+    }
+
+    .big p {
+        font-size: 1rem;
+    }
+
+    .small {
+        width: 20%;
+    }
+
+    .button {
+        width: 40%;
+        padding: 3px;
+    }
 }
