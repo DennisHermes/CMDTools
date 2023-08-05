@@ -15,8 +15,16 @@ body {
     padding-top: 100px;
 }
 
+.left h2 {
+    font-weight: 100;
+}
+
 .left h1 {
     font-size: 300%;
+}
+
+.left a {
+    color: #e5bbf3;
 }
 
 .right {
@@ -74,15 +82,16 @@ h1 {
     font-size: 35px;
 }
 
+img {
+    image-rendering: pixelated;
+}
+
 main h2 {
     text-align: center;
     font-size: 4rem;
     color: #3d3d3d;
     margin-bottom: 2rem;
     font-weight: bolder;
-    background: #50bc14;
-    -webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 }
 
 .big p {

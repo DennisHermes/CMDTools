@@ -18,7 +18,7 @@
 			<br><br>
 			<h1>CMDTools</h1>
 			<br>
-			<h2>With CMDTools you can add items to your server without overwriting any other ones!</h2>
+			<h2>Add <a class="typed" style="font-weight: bolder;"></a> to your server without overwriting any other ones!</h2>
 			<br><br><br><br><br><br>
 			<button class="cta">See how it works ></button>
 		</div>
@@ -33,21 +33,21 @@
 
 			<br><br><br><br><br><br><br>
 
-			<h2>What we do</h2>
+			<h2>Let me show you the new possibilities...</h2>
 
 			<br><br><br><br>
 	
 			<div class="bigSmallWrapper">
 
 					<div class="big">
-						<h3>Video Content Creation</h3>
-						<p>In collaboration with various Youtubers around the world, we create super fun in-game content for in their videos. This can include modding games to add certain new items and features.</p>
+						<h3>Create new items</h3>
+						<p>Add new food, new payment methods, new materials or maybe completely new armor and tools sets to your server!</p>
 						<br><br>
-						<a href="contact">Get in touch and upgrade your content →</a>
+						<a href="contact">Start creating →</a>
 					</div>
 
 					<div class="small">
-						<img src="media/content.svg" class="display" alt="content">
+						<img src="media/items.gif" class="display" alt="content">
 					</div>
 
 			</div>
@@ -87,6 +87,17 @@
 			</div>
 
 		</main>
+
+		<script src="js/utilities/typed.js"></script>
+		<script>
+            window.ityped.init(document.querySelector('.typed'), {
+                strings: ['items',  'entities', 'blocks'],
+				typeSpeed: 150,
+				backDelay: 1500,
+				backSpeed: 75,
+                loop: true
+            });
+        </script>
 
 	</body>
 
